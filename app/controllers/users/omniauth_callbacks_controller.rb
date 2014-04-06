@@ -1,11 +1,9 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def passthru
     # render :text => ENV.inspect
-    google_oauth2
   end
 
   def google_oauth2
-      # You need to implement the method below in your model (e.g. app/models/user.rb)
       @user = User.find_for_google_oauth2(request.env["omniauth.auth"], current_user)
 
       if @user.persisted?
