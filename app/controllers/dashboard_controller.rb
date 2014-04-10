@@ -52,6 +52,6 @@ class DashboardController < ApplicationController
 
     def reauthenticate
       sign_out_all_scopes
-      redirect_to current_url
+      redirect_to request.original_url
     end
 end
