@@ -1,4 +1,5 @@
 require 'annotated_event_list'
+require 'calendar_accessor'
 
 class DashboardController < ApplicationController
   rescue_from OAuth2::Error, with: :reauthenticate
