@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 1.2'
 gem "devise", "3.2.4"
 gem "omniauth-google-oauth2"
 gem "oauth2"
+gem "rails_autolink"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

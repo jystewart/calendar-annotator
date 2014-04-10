@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   rescue_from OAuth2::Error, with: :reauthenticate
 
   def index
-    @events = calendar_accessor.calendar_list(Date.today)
+    @calendars = calendar_accessor.calendar_list(Date.today)
   end
 
   def calendar
