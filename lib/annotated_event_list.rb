@@ -1,3 +1,5 @@
+require 'time'
+
 class AnnotatedEventList
   include Enumerable
 
@@ -26,11 +28,11 @@ class AnnotatedEventList
   def sorted_event_list(events)
     events.sort_by do |i|
       if i['start'].nil?
-        "0"
+        Time.parse '1970-01-01'
+      elsif i['start']['date']
+        Time.parse i['start']['date']
       elsif ! i['start']['dateTime'].nil?
-        i['start']['dateTime']
-      else
-        "1"
+        Time.parse i['start']['dateTime'].gsub(/^\d{4}-\d{2}-\d{2}T/, "")
       end
     end
   end
