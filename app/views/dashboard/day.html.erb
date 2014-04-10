@@ -1,9 +1,19 @@
-<ul>
+<ul id="event-list">
   <% sorted_item_list(@event_list['items']).each do |item| %>
   <li>
     <h3><%= item['summary'] %> @ <%= display_start_time(item) %></h3>
     <p><%= item['description'] %></p>
+
+    <hr />
+
     <p><%= link_to 'view in context', item['htmlLink'] %></p>
   </li>
   <% end %>
 </ul>
+
+<style type="text/css">
+#event-list {
+  padding-left: 0px;
+  list-style: none;
+}
+</style>
