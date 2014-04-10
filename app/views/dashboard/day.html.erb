@@ -9,7 +9,7 @@
   <li>
     <h3><%= item[:event]['summary'] %> @ <%= display_start_time(item[:event]) %></h3>
     <p><%= link_to 'view in context', item[:event]['htmlLink'] %></p>
-    <p><%= item[:event]['description'] %></p>
+    <p><%= truncate item[:event]['description'], length: 280 %></p>
     <%= form_for item[:annotation], role: 'form' do |f| %>
       <%= f.hidden_field :event_id %>
       <div class="form-group">
