@@ -1,9 +1,9 @@
 <ul>
-	<% @event_list['items'].sort_by { |i| i['start']['dateTime'] }.each do |item| %>
-	<li>
-		<h3><%= item['summary'] %> @ <%= DateTime.parse(item['start']['dateTime']).strftime("%k:%M") %></h3>
-		<p><%= item['description'] %></p>
-		<p><%= link_to 'view in context', item['htmlLink'] %></p>
-	</li>
-	<% end %>
+  <% sorted_item_list(@event_list['items']).each do |item| %>
+  <li>
+    <h3><%= item['summary'] %> @ <%= display_start_time(item) %></h3>
+    <p><%= item['description'] %></p>
+    <p><%= link_to 'view in context', item['htmlLink'] %></p>
+  </li>
+  <% end %>
 </ul>
