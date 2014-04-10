@@ -1,0 +1,7 @@
+<p>This service is based on Google Calendar so you'll need to sign in to your Google account to continue.</p>
+
+<p>When signing in you'll be asked to grant permission for offline use and for access to your calendar.</p>
+
+<div class="btn-group btn-group-justified">
+	<button id="sign-in"><%= link_to "Sign in now", omniauth_authorize_path(:user, :google_oauth2) %></button>
+</div>
