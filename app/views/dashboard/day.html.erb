@@ -1,19 +1,16 @@
+<h2><%= @day %></h2>
+
 <ul id="event-list">
-  <% sorted_item_list(@event_list['items']).each do |item| %>
+  <% @event_list.each do |item| %>
   <li>
-    <h3><%= item['summary'] %> @ <%= display_start_time(item) %></h3>
-    <p><%= item['description'] %></p>
-
-    <hr />
-
-    <p><%= link_to 'view in context', item['htmlLink'] %></p>
+    <h3><%= item[:event]['summary'] %> @ <%= display_start_time(item[:event]) %></h3>
+    <p><%= link_to 'view in context', item[:event]['htmlLink'] %></p>
+    <p><%= item[:event]['description'] %></p>
+    <%= form_for item[:annotation] do |f| %>
+      <%= f.hidden_field :event_id %>
+      <%= f.text_area :notes %>
+      <%= f.submit %>
+    <% end %>
   </li>
   <% end %>
 </ul>
-
-<style type="text/css">
-#event-list {
-  padding-left: 0px;
-  list-style: none;
-}
-</style>
