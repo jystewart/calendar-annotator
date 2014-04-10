@@ -1,5 +1,9 @@
 <h2><%= @day %></h2>
 
+<p><%= link_to "Previous day", day_path(id: params[:id], date: (@day - 1.day)) %> |
+  <%= link_to "Today", day_path(id: params[:id], date: Date.today) %> |
+  <%= link_to "Next day", day_path(id: params[:id], date: (@day + 1.day)) %></p>
+
 <ul id="event-list">
   <% @event_list.each do |item| %>
   <li>
