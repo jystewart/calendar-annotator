@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406080907) do
+ActiveRecord::Schema.define(version: 20140410145734) do
+
+  create_table "annotations", force: true do |t|
+    t.string   "event_id"
+    t.text     "notes"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

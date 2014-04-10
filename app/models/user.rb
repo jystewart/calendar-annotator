@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable,
   	:omniauthable, :omniauth_providers => [:google_oauth2]
 
+  has_many :annotations
+
   def self.find_for_google_oauth2(auth, blah = nil)
     if user = User.find_by_email(auth.info.email)
       user.access_token = auth.credentials.token

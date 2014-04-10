@@ -9,5 +9,7 @@ CalendarAnnotator::Application.routes.draw do
     get "/calendars/:id/:date" => "dashboard#day", as: :day, constraints: { date: /\d{4}-\d{2}-\d{2}/ }
   end
 
+  resources :annotations
+
   root 'dashboard#index'
 end
