@@ -2,7 +2,9 @@ class AnnotatedEventList
   include Enumerable
 
   def initialize(events, annotations)
-    @event_list = sorted_event_list(events).collect do |e|
+    events_happening = events.reject { |e| e['status'] == 'cancelled' }
+    sorted_events = sorted_event_list(events_happening)
+    @event_list = sorted_events.collect do |e|
       {
         event: e,
         annotation: annotation_for(e, annotations)
