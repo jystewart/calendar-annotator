@@ -1,10 +1,10 @@
 require 'oauth2'
 
 class CalendarAccessor
-  def initialize(auth_token)
+  def initialize(auth_token, credential_stash)
     client = OAuth2::Client.new(
-      Rails.application.secrets.google_client_id,
-      Rails.application.secrets.google_client_secret,
+      credential_stash.google_client_id,
+      credential_stash.google_client_secret,
       site: 'https://www.googleapis.com'
     )
     @token = OAuth2::AccessToken.new(client, auth_token)

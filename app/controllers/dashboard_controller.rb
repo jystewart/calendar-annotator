@@ -22,7 +22,7 @@ class DashboardController < ApplicationController
 
   protected
     def calendar_accessor
-      @calendar_accessor ||= CalendarAccessor.new(current_user.access_token)
+      @calendar_accessor ||= CalendarAccessor.new(current_user.access_token, Rails.application.secrets)
     end
 
     def reauthenticate
