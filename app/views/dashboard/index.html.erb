@@ -1,5 +1,5 @@
 <ul>
 	<% @events['items'].select { |i| i['accessRole'] == 'owner' }.each do |calendar| %>
-	<li><%= link_to calendar['description'], calendar['id'] %></li>
+	<li><%= link_to calendar['description'], calendar_path(calendar['id']) %></li>
 	<% end %>
 </ul>
