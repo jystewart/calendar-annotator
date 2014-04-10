@@ -10,6 +10,7 @@
     <h3><%= item[:event]['summary'] %> @ <%= display_start_time(item[:event]) %></h3>
     <p><%= link_to 'view in context', item[:event]['htmlLink'] %></p>
     <p><%= truncate item[:event]['description'], length: 280 %></p>
+
     <%= form_for item[:annotation], role: 'form' do |f| %>
       <%= f.hidden_field :event_id %>
       <div class="form-group">
@@ -20,3 +21,39 @@
   </li>
   <% end %>
 </ul>
+
+<script type="text/javascript">
+var highlightUpdate = function(elem) {
+  console.log(elem);
+  elem
+    .css("background-color", "#FFFF9C")
+    .animate({ backgroundColor: "#FFFFFF"}, 3000);
+}
+
+$(function () {
+  $('.edit_annotation, .new_annotation').submit(function () {
+    var form_in_question = $(this);
+
+    $.ajax({
+      type: "POST",
+      url: this.action + ".js",
+      data: $(this).serialize(),
+      statusCode: {
+        422: function() {
+          alert("There was an error. You should reload the page.");
+        },
+        201: function(data, textStatus, jqXHR) {
+          form_in_question[0].setAttribute('action', data.responseText);
+          form_in_question.append('<input name="_method" type="hidden" value="patch">');
+          highlightUpdate(form_in_question.find('textarea'));
+        },
+        200: function() {
+          if (console && console.log) { console.log("Note updated!"); }
+          highlightUpdate(form_in_question.find('textarea'));
+        }
+      }
+    });
+    return false;
+  })
+})
+</script>
