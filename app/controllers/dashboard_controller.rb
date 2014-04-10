@@ -2,8 +2,10 @@ class DashboardController < ApplicationController
   rescue_from OAuth2::Error, with: :reauthenticate
 
   class AnnotatedEventList
-    def self.build(events, annotations)
-      sorted_event_list(events).collect do |e|
+    include Enumerable
+
+    def initialize(events, annotations)
+      @event_list = sorted_event_list(events).collect do |e|
         {
           event: e,
           annotation: annotation_for(e, annotations)
@@ -11,7 +13,18 @@ class DashboardController < ApplicationController
       end
     end
 
-    def self.sorted_event_list(events)
+    def each &block
+      @event_list.each do |event|
+        if block_given?
+          block.call(event)
+        else
+          yield event
+        end
+      end
+    end
+
+    private
+    def sorted_event_list(events)
       events.sort_by do |i|
         if i['start'].nil?
           "0"
@@ -23,7 +36,7 @@ class DashboardController < ApplicationController
       end
     end
 
-    def self.annotation_for(event, annotations)
+    def annotation_for(event, annotations)
       annotations.find { |a| a.event_id == event['id'] } || Annotation.new(event_id: event['id'])
     end
   end
@@ -42,7 +55,7 @@ class DashboardController < ApplicationController
     annotations = current_user.annotations.where(
       event_id: event_list['items'].collect { |i| i['id'] }
     )
-    @event_list = AnnotatedEventList.build(event_list['items'], annotations)
+    @event_list = AnnotatedEventList.new(event_list['items'], annotations)
   end
 
   protected
