@@ -1,8 +1,18 @@
 class DashboardController < ApplicationController
-	def index
-		abc = CalendarAccessor.new(current_user.access_token)
-		@events = abc.event_list(Date.today)
-	rescue OAuth2::Error
-		@events = "NO PERMISSION"
-	end
+  def index
+    @events = calendar_accessor.calendar_list(Date.today)
+  end
+
+  def calendar
+    redirect_to day_path(date: Date.today.strftime("%Y-%m-%d"))
+  end
+
+  def day
+    @event_list = calendar_accessor.event_list(params[:id], Date.parse(params[:date]))
+  end
+
+  protected
+    def calendar_accessor
+      @calendar_accessor ||= CalendarAccessor.new(current_user.access_token)
+    end
 end
