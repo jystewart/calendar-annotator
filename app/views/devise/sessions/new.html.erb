@@ -3,5 +3,7 @@
 <p>When signing in you'll be asked to grant permission for offline use and for access to your calendar.</p>
 
 <div class="btn-group btn-group-justified">
-	<button id="sign-in"><%= link_to "Sign in now", omniauth_authorize_path(:user, :google_oauth2) %></button>
+  <div id="sign-in">
+    <%= link_to "Sign in now", omniauth_authorize_path(:user, :google_oauth2) %>
+  </div>
 </div>
