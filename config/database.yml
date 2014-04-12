@@ -9,3 +9,13 @@ development:
   database: annotator_development
   pool: 5
   password:
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: annotator_test
+  pool: 5
+  password:
+
+cucumber:
+  <<: *test

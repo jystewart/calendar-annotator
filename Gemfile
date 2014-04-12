@@ -36,6 +36,13 @@ gem 'spring', group: :development
 # To enable features such as static asset serving and logging on Heroku
 gem 'rails_12factor', group: :production
 
+group :test do
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'webmock'
+  gem 'vcr'
+end
+
 # Use unicorn as the app server
 gem 'puma'
 
