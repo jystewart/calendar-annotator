@@ -28,6 +28,7 @@ class DashboardController < ApplicationController
 
     def reauthenticate
       sign_out_all_scopes
+      flash[:notice] = "There was a problem with your google account. Please sign in again."
       redirect_to request.original_url
     end
 end
