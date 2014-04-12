@@ -1,9 +1,3 @@
-if ENV['WITH_SERVER'] == 'true'
-  start_sinatra_app(:port => 7777) do
-    get('/:path') { "Hello #{params[:path]}" }
-  end
-end
-
 require 'vcr'
 
 VCR.configure do |c|
@@ -13,6 +7,7 @@ VCR.configure do |c|
 end
 
 VCR.cucumber_tags do |t|
-  t.tag  '@localhost_request' # uses default record mode since no options are given
+  t.tag '@localhost_request' # uses default record mode since no options are given
+  t.tag '@successful_calendar_list', :record => :none
   t.tags '@disallowed_1', '@disallowed_2', :record => :none
 end

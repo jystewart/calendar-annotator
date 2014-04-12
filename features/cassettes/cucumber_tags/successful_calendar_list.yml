@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/calendar/v3/users/me/calendarList
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Authorization:
+      - Bearer my_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: Ok
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 12 Apr 2014 09:58:56 GMT
+      Expires:
+      - Sat, 12 Apr 2014 09:58:56 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "calendar#calendarList",
+         "etag": "\"brXLH9dIsANhw0fUafNoxUtvJn8/vqrjOgWVlUfLg9E8ZuVYAxHEc-Q\"",
+         "items": [
+          {
+           "kind": "calendar#calendarListEntry",
+           "etag": "\"brXLH9dIsAIkcPsuiPmj_vNhw0fUafNoxUtvJn8/ONoMwjboKd-MbmM\"",
+           "id": "testuser@testappsdomain.co.uk",
+           "summary": "testuser@testappsdomain.co.uk",
+           "timeZone": "Europe/London",
+           "colorId": "3",
+           "backgroundColor": "#882f00",
+           "foregroundColor": "#ffffff",
+           "selected": true,
+           "accessRole": "owner",
+           "notificationSettings": {
+            "notifications": [
+             {
+              "type": "eventCreation",
+              "method": "email"
+             },
+             {
+              "type": "eventChange",
+              "method": "email"
+             },
+             {
+              "type": "eventCancellation",
+              "method": "email"
+             },
+             {
+              "type": "agenda",
+              "method": "email"
+             }
+            ]
+           },
+           "primary": true
+          },
+          {
+           "kind": "calendar#calendarListEntry",
+           "etag": "\"brdIsANhw0fUafNoxUtvJn8/uk_on9wXXLH9uc1a7PIviUj3wflnA-c\"",
+           "id": "testappsdomain.co.uk_nccopc80nkuujdpeenj6nqir0k@group.calendar.google.com",
+           "summary": "Some sort of shared calendar",
+           "description": "Please note that this is a shared calendar",
+           "timeZone": "Europe/London",
+           "colorId": "20",
+           "backgroundColor": "#cabdbf",
+           "foregroundColor": "#000000",
+           "accessRole": "owner"
+          },
+          {
+           "kind": "calendar#calendarListEntry",
+           "etag": "\"brXLJn8/lRaSBsD3valH9dIsANhw0fUafNoxUtvip0OZUBJt6Rct0TQ\"",
+           "id": "adifferentperson@testappsdomain.co.uk",
+           "summary": "adifferentperson@testappsdomain.co.uk",
+           "timeZone": "Europe/London",
+           "colorId": "11",
+           "backgroundColor": "#fbe983",
+           "foregroundColor": "#000000",
+           "accessRole": "reader"
+          },
+         ]
+        }
+
+    http_version: 
+  recorded_at: Sat, 12 Apr 2014 09:58:55 GMT
+recorded_with: VCR 2.9.0

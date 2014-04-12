@@ -1,11 +1,16 @@
-Feature: Some terse yet descriptive text of what is desired
+Feature: Users need to be able to provide access to their calendars
   In order to access calendar details
   A user with a google account
   Should be able to authenticate using that account
 
-  @localhost_request
+  @successful_calendar_list @successful_google_authentication
   Scenario: Successful authentication
-  	Given that I have mocked a successful google authentication
     When I go to the dashboard
       And I sign in correctly with google
     Then I should see a list of my calendars
+
+  @failed_google_authentication
+  Scenario: Unsuccessful authentication
+    When I go to the dashboard
+      And I fail to sign in correctly or I refuse permission
+    Then I should get a friendly error message explaining my folly

@@ -1,4 +1,9 @@
-Given(/^that I have mocked a successful google authentication$/) do
+Before('@failed_google_authentication') do
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
+end
+
+Before('@successful_google_authentication') do
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
     :credentials => {
@@ -33,6 +38,13 @@ Given(/^that I have mocked a successful google authentication$/) do
   })
 end
 
+After('@successful_google_authentication, @failed_google_authentication') do
+  OmniAuth.config.test_mode = false
+end
+Given(/^that I have mocked a successful google authentication$/) do
+
+end
+
 When(/^I go to the dashboard$/) do
   visit "/"
 end
@@ -43,4 +55,13 @@ end
 
 Then(/^I should see a list of my calendars$/) do
   assert page.has_content?("My Calendars"), "Missing content\n\n#{page.body}"
+end
+
+When(/^I fail to sign in correctly or I refuse permission$/) do
+  # The failure is implicit here, it's set by the tag on the feature
+  click_link "Sign in now"
+end
+
+Then(/^I should get a friendly error message explaining my folly$/) do
+  assert page.has_content?("You really will need to sign in to google to continue")
 end
