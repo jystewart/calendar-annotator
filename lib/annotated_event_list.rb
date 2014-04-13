@@ -14,6 +14,10 @@ class AnnotatedEventList
     end
   end
 
+  def [](index)
+    @event_list[index]
+  end
+
   def each &block
     @event_list.each do |event|
       if block_given?
