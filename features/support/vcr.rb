@@ -8,6 +8,8 @@ end
 
 VCR.cucumber_tags do |t|
   t.tag '@localhost_request' # uses default record mode since no options are given
-  t.tag '@successful_calendar_list', :record => :none
+  t.tags '@successful_calendar_list', '@todays_event_list',
+    :record => :none, :match_requests_on => [:path],
+    :allow_playback_repeats => true
   t.tags '@disallowed_1', '@disallowed_2', :record => :none
 end

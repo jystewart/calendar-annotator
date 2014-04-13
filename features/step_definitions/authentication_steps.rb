@@ -41,9 +41,6 @@ end
 After('@successful_google_authentication, @failed_google_authentication') do
   OmniAuth.config.test_mode = false
 end
-Given(/^that I have mocked a successful google authentication$/) do
-
-end
 
 When(/^I go to the dashboard$/) do
   visit "/"

@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/calendar/v3/calendars/testuser@testappsdomain.co.uk/events?timeMax=2014-04-12T23:59:59Z&timeMin=2014-04-12T00:00:00Z
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Authorization:
+      - Bearer my_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: Ok
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 12 Apr 2014 09:58:56 GMT
+      Expires:
+      - Sat, 12 Apr 2014 09:58:56 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "calendar#events",
+          "etag": "\"brXLH9dIsANhw0fUafNoxUtvJn8/ZfZL1pDGWfkpJqmQmXFladkdx-w\"",
+          "summary": "testuser@testappsdomain.co.uk",
+          "updated": "2014-04-12T10:55:36.415Z",
+          "timeZone": "Europe/London",
+          "accessRole": "owner",
+          "items": [
+          {
+           "kind": "calendar#event",
+           "etag": "\"brXLH9dIsANhw0fUafNoxUtvJn8/MTM5NTIyNDUzNjU5NzAwMA\"",
+           "id": "sd636p6i9657s1qud851nsb0j8",
+           "status": "confirmed",
+           "htmlLink": "https://www.google.com/calendar/event?eid=c2Q2MzZwNmk5NjU3czFxdWQ4NTFuc2IwajggamFtZXMuc3Rld2FydEBkaWdpdGFsLmNhYmluZXQtb2ZmaWNlLmdvdi51aw",
+           "created": "2013-10-08T07:36:50.000Z",
+           "updated": "2014-03-19T10:22:16.597Z",
+           "summary": "First event of the day",
+           "creator": {
+            "email": "testuser@testappsdomain.co.uk",
+            "displayName": "James Stewart",
+            "self": true
+           },
+           "organizer": {
+            "email": "testuser@testappsdomain.co.uk",
+            "displayName": "James Stewart",
+            "self": true
+           },
+           "start": {
+            "dateTime": "<%= Date.today.to_s %>T12:00:00Z"
+           },
+           "end": {
+            "dateTime": "<%= Date.today.to_s %>T13:00:00Z"
+           },
+           "iCalUID": "sd636p6i9657s1qud851nsb0j8@google.com",
+           "sequence": 1,
+           "reminders": {
+            "useDefault": false
+           }
+          }
+          ]
+          }
+
+      http_version: 
+  recorded_at: Sat, 12 Apr 2014 09:58:55 GMT
+recorded_with: VCR 2.9.0
