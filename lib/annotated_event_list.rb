@@ -38,8 +38,8 @@ class AnnotatedEventList
   # best effort to identify those and just keep those with unique IDs as they're better for
   # annotating.
   def duplicate_recurring_event(event)
-    (e[:event]['recurringEventId'].present? && e[:event]['id'] == e[:event]['recurringEventId']) ||
-      (e[:event]['recurringEventId'].blank? && e[:event]['recurrence'].present?)
+    (event['recurringEventId'].present? && event['id'] == event['recurringEventId']) ||
+      (event['recurringEventId'].blank? && event['recurrence'].present?)
   end
 
   def not_attending(event)
