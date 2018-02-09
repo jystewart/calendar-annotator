@@ -38,7 +38,7 @@ Before('@successful_google_authentication') do
   })
 end
 
-After('@successful_google_authentication, @failed_google_authentication') do
+After('@successful_google_authentication or @failed_google_authentication') do
   OmniAuth.config.test_mode = false
 end
 
