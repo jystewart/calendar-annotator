@@ -63,6 +63,6 @@ class AnnotatedEventList
   end
 
   def annotation_for(event, annotations)
-    annotations.find { |a| a.event_id == event['id'] } || Annotation.new(event_id: event['id'])
+    annotations.find { |a| a.event_id.to_i == event['id'].to_i } || Annotation.new(event_id: event['id'])
   end
 end

@@ -60,13 +60,13 @@ class AnnotatedEventListTest < ActiveSupport::TestCase
 
   test "it combines existing annotations with relevant events" do
     a = AnnotatedEventList.new(EVENT_LIST, ANNOTATIONS)
-    matched = a.detect { |event| event[:event]['id'] == ANNOTATIONS.first.event_id}
+    matched = a.detect { |event| event[:event]['id'].to_i == ANNOTATIONS.first.event_id.to_i }
     assert_equal 'An existing note', matched[:annotation][:notes]
   end
 
   test "it creates new annotations where there aren't any" do
     a = AnnotatedEventList.new(EVENT_LIST, ANNOTATIONS)
-    matched = a.reject { |event| event[:event]['id'] == ANNOTATIONS.first.event_id}
+    matched = a.reject { |event| event[:event]['id'].to_i == ANNOTATIONS.first.event_id.to_i }
     matched.each do |event|
       assert_nil event[:annotation][:notes]
     end
