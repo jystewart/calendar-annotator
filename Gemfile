@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '~> 4.2.10'
 
-gem "pg"
+gem 'pg', '~> 0.18'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -21,7 +21,7 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem "devise", "3.2.4"
+gem "devise", "4.4.1"
 gem "omniauth-google-oauth2"
 gem "oauth2"
 gem "rails_autolink"
@@ -50,4 +50,4 @@ gem 'puma'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-ruby "2.0.0"
+ruby "2.3.6"
